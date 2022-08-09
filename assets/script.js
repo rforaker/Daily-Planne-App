@@ -68,7 +68,7 @@ businessHours.forEach(function(currentHour) {
     // Makes hours row
     var hoursRow = $("<form>").attr({"class": "row"});
     $(".container").append(hoursRow);
-    
+
     // Creates space to add text details to your plan for that hour
     var hourInput = $("<div>")
         .attr({"class": "col-lg-9 description p-0"});
@@ -96,3 +96,14 @@ businessHours.forEach(function(currentHour) {
     saveDay.append(saveBtn);
     hoursRow.append(hoursBox, hourInput, saveDay);
 })
+
+
+
+// Gets the current date, then displays that date in the element ID currentDay
+function displayDate() {
+    var currentDate = moment().format('dddd, MM/D/YY');
+    $("#currentDay").text(currentDate);
+}
+
+// Call function to display date on top
+displayDate();

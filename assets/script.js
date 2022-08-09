@@ -67,4 +67,32 @@ businessHours.forEach(function(currentHour) {
 
     // Makes hours row
     var hoursRow = $("<form>").attr({"class": "row"});
-    $(".container").append(hoursRow);})
+    $(".container").append(hoursRow);
+    
+    // Creates space to add text details to your plan for that hour
+    var hourInput = $("<div>")
+        .attr({"class": "col-lg-9 description p-0"});
+
+    var planData = $("<textarea>");
+    hourInput.append(planData);
+    planData.attr("id", currentHour.id);
+
+    // Sets styling based on whether the event hour is in the past, present, or future
+    if (currentHour.milTime < moment().format("HH")) {
+        planData.attr ({"class": "past", })
+
+    } else if (currentHour.milTime === moment().format("HH")) {
+        planData.attr({"class": "present"})
+
+    } else if (currentHour.milTime > moment().format("HH")) {
+        planData.attr({"class": "future"})
+
+    }
+
+    // Add a save button at the end of each row
+    var saveBtn = $("<i class='far fa-save fa-lg'></i>")
+    var saveDay = $("<button>")
+        .attr({"class": "col-md-1 saveBtn"});
+    saveDay.append(saveBtn);
+    hoursRow.append(hoursBox, hourInput, saveDay);
+})
